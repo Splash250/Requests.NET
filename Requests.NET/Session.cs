@@ -51,6 +51,7 @@ namespace Requests.NET
             request.Method = EnvironmentStrings.GetMethod;
             request.CookieContainer = SessionCookies;
 
+            return GetPageWithHeader(request, headerParameters);
 
         }
         private RequestResponse GetPageWithHeader(HttpWebRequest request, Dictionary<string, string> headerParameters = null)
