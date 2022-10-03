@@ -9,17 +9,17 @@
 
         public static string DefaultDateTimeFormat = "yyyy-MM-dd HH:mm:ss,fff";
 
-        public static string AcceptHeaderString = "Accept";
-        public static string ConnectionHeaderString = "Connection";
-        public static string ContentLengthHeaderString = "Content-Length";
-        public static string ContentTypeHeaderString = "Content-Type";
-        public static string DateHeaderString = "Date";
-        public static string ExpectHeaderString = "Expect";
-        public static string HostHeaderString = "Host";
-        public static string RefererHeaderString = "Referer";
-        public static string UserAgentHeaderString = "User-Agent";
-        public static string ProtocolVersionHeaderString = "Protocol-Version";
-        public static string TransferEncodingHeaderString = "Trasfer-Encoding";
-        public static string TimeoutHeaderString = "Timeout";
+        public static string AcceptHeaderString = "accept";
+        public static string ConnectionHeaderString = "connection";
+        public static string ContentLengthHeaderString = "content-length";
+        public static string ContentTypeHeaderString = "content-type";
+        public static string DateHeaderString = "date";
+        public static string ExpectHeaderString = "expect";
+        public static string HostHeaderString = "host";
+        public static string RefererHeaderString = "referer";
+        public static string UserAgentHeaderString = "user-agent";
+        public static string ProtocolVersionHeaderString = "protocol-version";
+        public static string TransferEncodingHeaderString = "trasfer-encoding";
+        public static string TimeoutHeaderString = "timeout";
     }
 }

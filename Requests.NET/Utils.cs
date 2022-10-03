@@ -21,7 +21,12 @@ namespace Requests.NET
             {
                 for (int i = 0; i < headerParameters.Count; i++)
                 {
-                    LoadParam(req, headerParameters.ElementAt(i));
+                    KeyValuePair<string, string> headerPair = 
+                        new KeyValuePair<string, string>(
+                            headerParameters.ElementAt(i).Key.ToLower(), 
+                            headerParameters.ElementAt(i).Value
+                            );
+                    LoadParam(req, headerPair);
                 }
             }
             return req;
