@@ -18,19 +18,19 @@ namespace Requests.NET
         {
             SessionCookies = new CookieContainer();
         }
-        public RequestResponse Post(string URL, string data, Dictionary<string, string> headerParameters = null)
+        public Session Post(string URL, string data, Dictionary<string, string> headerParameters = null)
         {
             Utils.CheckHeaderParams(ref headerParameters);
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL);
             request.Method = EnvironmentStrings.PostMethod;
-            request.CookieContainer = SessionCookies;
             byte[] byteArray = Encoding.UTF8.GetBytes(data);
 
             Utils.AddRequestParams(request, headerParameters);
+            request.CookieContainer = SessionCookies;
 
             Response = TrySendRequestAndGetResponse(request, byteArray);
-            return Response;
+            return this;
         }
         private RequestResponse TrySendRequestAndGetResponse(WebRequest request, byte[] dataBytes)
         {
@@ -91,7 +91,7 @@ namespace Requests.NET
             }
         }
 
-        public RequestResponse Get(string URL,Dictionary<string, string> headerParameters = null)
+        public Session Get(string URL,Dictionary<string, string> headerParameters = null)
         {
             try
             {
@@ -100,15 +100,16 @@ namespace Requests.NET
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL);
                 request.Method = EnvironmentStrings.GetMethod;
                 request.CookieContainer = SessionCookies;
-
-                return GetPageWithHeader(request, headerParameters);
+                Response = GetPageWithHeader(request, headerParameters);
+                return this;
             }
             catch (WebException ex)
             {
                 RequestResponse webErrorResponse = new RequestResponse();
                 if (TryLoadWebException(ex, out webErrorResponse))
                 {
-                    return webErrorResponse;
+                    Response = webErrorResponse;
+                    return this;
                 }
                 throw ex;
             }

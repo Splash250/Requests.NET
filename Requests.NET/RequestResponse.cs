@@ -66,18 +66,6 @@ namespace Requests.NET
                 }
             }
         }
-
-        public RequestResponse Post(string url, string data, Dictionary<string, string> headerParameters = null)
-        {
-            Session session = new Session(ResponseCookies);
-            RequestResponse response = Requests.Post(url, data, session, headerParameters);
-            return response;
-        }
-        public RequestResponse Get(string url, Dictionary<string, string> headerParameters = null)
-        {
-            Session session = new Session(ResponseCookies);
-            return Requests.Get(url, session, headerParameters);
-        }
         public Session ToSession()
         {
             return new Session(ResponseCookies);
