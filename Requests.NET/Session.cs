@@ -20,26 +20,17 @@ namespace Requests.NET
         }
         public RequestResponse Post(string URL, string data, Dictionary<string, string> headerParameters = null)
         {
-            try
-            {
-                Utils.CheckHeaderParams(ref headerParameters);
+            Utils.CheckHeaderParams(ref headerParameters);
 
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL);
-                request.Method = EnvironmentStrings.PostMethod;
-                request.CookieContainer = SessionCookies;
-                byte[] byteArray = Encoding.UTF8.GetBytes(data);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL);
+            request.Method = EnvironmentStrings.PostMethod;
+            request.CookieContainer = SessionCookies;
+            byte[] byteArray = Encoding.UTF8.GetBytes(data);
 
-                Utils.AddRequestParams(request, headerParameters);
+            Utils.AddRequestParams(request, headerParameters);
 
-                Response = TrySendRequestAndGetResponse(request, byteArray);
-                return Response;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-
+            Response = TrySendRequestAndGetResponse(request, byteArray);
+            return Response;
         }
         private RequestResponse TrySendRequestAndGetResponse(WebRequest request, byte[] dataBytes)
         {
